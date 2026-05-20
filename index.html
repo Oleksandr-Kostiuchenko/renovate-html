@@ -4,44 +4,61 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Renovate HTML</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@3.0.1/modern-normalize.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <header>
-      <a class="page-logo" href="./index.html">Webstudio</a>
+    <header class="page-header">
+      <a class="page-logo" href="./index.html">
+        <span class="page-logo-span">Web</span>studio</a
+      >
 
-      <nav>
-        <ul>
-          <li>
-            <a href="#studio">Studio</a>
+      <nav class="page-nav">
+        <ul class="page-nav-list">
+          <li class="nav-list-item">
+            <a href="#studio" class="nav-link">Studio</a>
           </li>
-          <li>
-            <a href="#portfolio">Portfolio</a>
+          <li class="nav-list-item">
+            <a href="#portfolio" class="nav-link">Portfolio</a>
           </li>
-          <li>
-            <a href="#contacts">Contacts</a>
+          <li class="nav-list-item">
+            <a href="#contacts" class="nav-link">Contacts</a>
           </li>
         </ul>
       </nav>
 
       <address>
-        <ul>
-          <li>
-            <a href="mailto:info@devstudio.com">info@devstudio.com</a>
+        <ul class="adress-list">
+          <li class="adress-list-item">
+            <a href="mailto:info@devstudio.com" class="adress-link"
+              >info@devstudio.com</a
+            >
           </li>
-          <li>
-            <a href="tel:+11 (000) 111-11-11">+11 (000) 111-11-11</a>
+          <li class="adress-list-item">
+            <a href="tel:+11 (000) 111-11-11" class="adress-link"
+              >+11 (000) 111-11-11</a
+            >
           </li>
         </ul>
       </address>
     </header>
 
     <main>
-      <section id="hero-section">
+      <section class="hero-section" id="hero">
         <h1 class="hero-section-title">
           Effective Solutions for Your Business
         </h1>
 
-        <button type="button">Order Service</button>
+        <button type="button" class="order-btn">Order Service</button>
       </section>
 
       <section id="benefits-section">
@@ -79,7 +96,8 @@
         </ul>
       </section>
 
-      <section id="team-section">
+      <section class="team-section" id="team">
+        <h2>Our Team</h2>
         <ul class="team-list">
           <li class="team-list-item">
             <img
@@ -87,7 +105,7 @@
               alt="Mark Guerrero"
               class="team-member-img"
             />
-            <div>
+            <div class="team-member-text-container">
               <p class="team-member-name">Mark Guerrero</p>
               <p class="team-member-role">Product Designer</p>
             </div>
@@ -98,7 +116,7 @@
               alt="Tom Ford"
               class="team-member-img"
             />
-            <div>
+            <div class="team-member-text-container">
               <p class="team-member-name">Tom Ford</p>
               <p class="team-member-role">Frontend Developer</p>
             </div>
@@ -109,7 +127,7 @@
               alt="Camila Garcia"
               class="team-member-img"
             />
-            <div>
+            <div class="team-member-text-container">
               <p class="team-member-name">Camila Garcia</p>
               <p class="team-member-role">Marketing</p>
             </div>
@@ -120,17 +138,86 @@
               alt="Daniel Wilson"
               class="team-member-img"
             />
-            <div>
+            <div class="team-member-text-container">
               <p class="team-member-name">Daniel Wilson</p>
               <p class="team-member-role">UI Designer</p>
             </div>
           </li>
         </ul>
       </section>
+
+      <section id="portfolio-section">
+        <h2 class="portfolio-section-title">Our Portfolio</h2>
+
+        <ul class="portfolio-list">
+          <li class="portfolio-list-item">
+            <img
+              src="./images/banking.png"
+              alt="Portfolio Project image"
+              class="portfolio-list-img"
+            />
+
+            <p class="portfolio-project-title">Banking App</p>
+            <p class="ortfolio-project-description">App</p>
+          </li>
+          <li class="portfolio-list-item">
+            <img
+              src="./images/payment.png"
+              alt="Portfolio Project image"
+              class="portfolio-list-img"
+            />
+
+            <p class="portfolio-project-title">Cashless Payment</p>
+            <p class="ortfolio-project-description">Marketing</p>
+          </li>
+          <li class="portfolio-list-item">
+            <img
+              src="./images/meditation.png"
+              alt="Portfolio Project image"
+              class="portfolio-list-img"
+            />
+
+            <p class="portfolio-project-title">Meditation App</p>
+            <p class="ortfolio-project-description">App</p>
+          </li>
+          <li class="portfolio-list-item">
+            <img
+              src="./images/taxi.png"
+              alt="Portfolio Project image"
+              class="portfolio-list-img"
+            />
+
+            <p class="portfolio-project-title">Taxi Service</p>
+            <p class="ortfolio-project-description">Marketing</p>
+          </li>
+          <li class="portfolio-list-item">
+            <img
+              src="./images/screen.png"
+              alt="Portfolio Project image"
+              class="portfolio-list-img"
+            />
+
+            <p class="portfolio-project-title">Screen Illustrations</p>
+            <p class="ortfolio-project-description">Design</p>
+          </li>
+          <li class="portfolio-list-item">
+            <img
+              src="./images/courses.png"
+              alt="Portfolio Project image"
+              class="portfolio-list-img"
+            />
+
+            <p class="portfolio-project-title">Online Courses</p>
+            <p class="ortfolio-project-description">Marketing</p>
+          </li>
+        </ul>
+      </section>
     </main>
 
-    <footer>
-      <a class="page-logo" href="./index.html">Webstudio</a>
+    <footer class="footer-section" id="footer">
+      <a class="page-logo-footer" href="./index.html">
+        <span class="page-footer-logo-span">Web</span>studio</a
+      >
 
       <p class="footer-paragraph-description">
         Increase the flow of customers and sales for your business with digital
