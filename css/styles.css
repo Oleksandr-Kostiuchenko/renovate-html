@@ -101,7 +101,7 @@ body::-webkit-scrollbar {
 /* ------------------------------------- HEADER STYLES ------------------------------------- */
 .page-header-container {
   display: flex;
-  padding: 15px 0;
+  padding: 24px 15px;
 }
 
 .page-logo {
