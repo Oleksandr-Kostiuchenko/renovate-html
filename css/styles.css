@@ -5,6 +5,12 @@ body {
   background-color: #ffffff;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 p {
   margin: 0;
   padding: 0;
@@ -13,10 +19,19 @@ p {
 ul,
 ol {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
+  display: block;
   text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
 }
 
 h1,
@@ -68,10 +83,19 @@ body::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
+
+.container {
+  max-width: 1158px;
+  padding: 0 15px;
+  /* margin: 0 141px; */
+  margin: 0 auto;
+}
 /* ------------------------------------- /GENERAL STYLES ------------------------------------- */
 
-.page-header {
+/* ------------------------------------- HEADER STYLES ------------------------------------- */
+.page-header-container {
   display: flex;
+  padding: 15px 0;
 }
 
 .page-logo {
@@ -125,19 +149,23 @@ body::-webkit-scrollbar {
 /* ------------------------------------- /HEADER STYLES ------------------------------------- */
 
 /* ------------------------------------- HERO SECTION STYLES ------------------------------------- */
-
 .hero-section {
   background-color: #2e2f42;
+}
+
+.hero-section-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 188px 0;
 }
 
 .hero-section-title {
+  width: 496px;
   text-align: center;
   color: #fff;
-  width: 496px;
+
+  margin-bottom: 48px;
 }
 
 .order-btn {
@@ -154,6 +182,10 @@ body::-webkit-scrollbar {
 /* ------------------------------------- /HERO SECTION STYLES ------------------------------------- */
 
 /* ------------------------------------- BENEFITS SECTION STYLES ------------------------------------- */
+.benefits-section-container {
+  padding: 120px 0;
+}
+
 .benefits-section-title {
   display: none;
 }
@@ -164,7 +196,7 @@ body::-webkit-scrollbar {
 }
 
 .benefits-list-item {
-  width: 264px;
+  flex-basis: calc(100% - 72px) / 4;
 }
 
 .benefits-list-title {
@@ -179,13 +211,25 @@ body::-webkit-scrollbar {
   background-color: #f4f4fd;
 }
 
+.team-section-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 0;
+}
+
+.team-section-title {
+  margin-bottom: 72px;
+}
+
 .team-list {
   display: flex;
   gap: 24px;
 }
 
 .team-list-item {
-  width: 264px;
+  flex-basis: calc(100% - 72px) / 4;
   height: 380px;
 
   box-shadow:
@@ -206,6 +250,8 @@ body::-webkit-scrollbar {
   letter-spacing: 0.02em;
   color: #2e2f42;
   text-align: center;
+
+  margin-bottom: 8px;
 }
 
 .team-member-role {
@@ -214,17 +260,60 @@ body::-webkit-scrollbar {
 /* ------------------------------------- /TEAM SECTION STYLES ------------------------------------- */
 
 /* ------------------------------------- PORTFOLIO SECTION STYLES ------------------------------------- */
+.portfolio-section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 120px 0;
+}
+
+.portfolio-section-title {
+  margin-bottom: 72px;
+}
+
+.portfolio-list {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 24px;
+  column-gap: 24px;
+}
+
+.portfolio-list-item {
+  flex-basis: calc(100% - 48px) / 3;
+  height: 420px;
+}
+
+.portfolio-descritpion-container {
+  padding: 32px 0px 32px 16px;
+  border-left: 1px solid #e7e9fc;
+  border-right: 1px solid #e7e9fc;
+  border-bottom: 1px solid #e7e9fc;
+}
+
+.portfolio-list-img {
+  width: 360px;
+  height: 300px;
+}
+
 .portfolio-project-title {
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
   letter-spacing: 0.02em;
   color: #2e2f42;
+
+  margin-bottom: 8px;
 }
 
 /* ------------------------------------- /PORTFOLIO SECTION STYLES ------------------------------------- */
 
 /* ------------------------------------- FOOTER SECTION STYLES ------------------------------------- */
+
+.footer-container {
+  padding: 100px 0;
+}
 
 .footer-section {
   background-color: #2e2f42;
@@ -238,6 +327,8 @@ body::-webkit-scrollbar {
   letter-spacing: 0.03em;
   text-transform: uppercase;
   color: #f4f4fd;
+
+  margin-bottom: 16px;
 }
 
 .page-footer-logo-span {
