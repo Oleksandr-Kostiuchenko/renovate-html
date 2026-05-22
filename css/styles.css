@@ -280,10 +280,6 @@ body::-webkit-scrollbar {
   transform: scaleX(1);
 }
 
-.hover-underline-animation.left::after {
-  transform-origin: bottom right;
-}
-
 .nav-link:hover,
 .nav-link:focus,
 .adress-link:hover,
@@ -500,7 +496,7 @@ body::-webkit-scrollbar {
 }
 
 .benefits-list-item {
-  flex-basis: calc(100% - 72px) / 4;
+  flex-basis: calc((100% - 72px) / 4);
 }
 
 .benefits-list-title {
@@ -540,7 +536,7 @@ body::-webkit-scrollbar {
 }
 
 .team-list-item {
-  flex-basis: calc(100% - 72px) / 4;
+  flex-basis: calc((100% - 72px) / 4);
   height: 380px;
 
   box-shadow:
@@ -628,7 +624,7 @@ body::-webkit-scrollbar {
 }
 
 .portfolio-list-item {
-  flex-basis: calc(100% - 48px) / 3;
+  flex-basis: calc((100% - 48px) / 3);
   height: 420px;
 
   transition: all 250ms linear;

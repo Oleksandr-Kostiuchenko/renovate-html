@@ -78,32 +78,4 @@
 
   attachParticles(logo, 75);
   attachParticles(document.querySelector(".order-btn"), 60);
-
-  // ── Smooth scroll ─────────────────────────────────────────────────────────
-  function easeInOutQuint(t) {
-    return t < 0.5 ? 16 * t * t * t * t * t : 1 - Math.pow(-2 * t + 2, 5) / 2;
-  }
-
-  function smoothScrollTo(targetY, duration) {
-    const startY = window.scrollY;
-    const distance = targetY - startY;
-    let startTime = null;
-    function step(timestamp) {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / duration, 1);
-      window.scrollTo(0, startY + distance * easeInOutQuint(progress));
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", (e) => {
-      const target = document.querySelector(anchor.getAttribute("href"));
-      if (target) {
-        e.preventDefault();
-        smoothScrollTo(target.offsetTop, 950);
-      }
-    });
-  });
 })();
