@@ -79,3 +79,118 @@
   attachParticles(logo, 75);
   attachParticles(document.querySelector(".order-btn"), 60);
 })();
+
+// ── Scroll reveal ─────────────────────────────────────────────────────────────
+(function () {
+  "use strict";
+
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
+
+  // ── Class-based reveal: headings, portfolio, footer ──────────────────────
+  const singles = [
+    ".team-section-title",
+    ".portfolio-section-title",
+  ];
+
+  const staggerGroups = [
+    { selector: ".portfolio-list-item", delay: 70 },
+    { selector: ".footer-container > div", delay: 110 },
+  ];
+
+  const revealEls = [];
+
+  singles.forEach((sel) => {
+    const el = document.querySelector(sel);
+    if (!el) return;
+    el.classList.add("js-reveal");
+    revealEls.push(el);
+  });
+
+  staggerGroups.forEach(({ selector, delay }) => {
+    document.querySelectorAll(selector).forEach((el, i) => {
+      el.classList.add("js-reveal");
+      el.style.setProperty("--reveal-delay", i * delay + "ms");
+      revealEls.push(el);
+    });
+  });
+
+  if (reducedMotion) {
+    revealEls.forEach((el) => el.classList.add("is-visible"));
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.12 },
+    );
+    revealEls.forEach((el) => observer.observe(el));
+  }
+
+  // ── Team cards: inline-style approach (no conflict with cinematic hover) ──
+  const teamItems = Array.from(document.querySelectorAll(".team-list-item"));
+
+  if (reducedMotion) return;
+
+  teamItems.forEach((el) => {
+    el.style.opacity = "0";
+    el.style.transform = "translateY(28px)";
+  });
+
+  const teamObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const i = teamItems.indexOf(el);
+        setTimeout(() => {
+          el.style.transition =
+            "opacity 600ms ease, transform 600ms cubic-bezier(0.16,1,0.3,1)";
+          el.style.opacity = "";
+          el.style.transform = "";
+          el.addEventListener(
+            "transitionend",
+            () => { el.style.transition = ""; },
+            { once: true },
+          );
+        }, i * 100);
+        teamObserver.unobserve(el);
+      });
+    },
+    { threshold: 0.12 },
+  );
+
+  teamItems.forEach((el) => teamObserver.observe(el));
+})();
+
+// ── Benefits section stagger entrance ────────────────────────────────────────
+(function () {
+  "use strict";
+
+  const items = Array.from(document.querySelectorAll(".benefits-list-item"));
+  if (!items.length) return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    items.forEach((el) => el.classList.add("in-view"));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const index = items.indexOf(entry.target);
+        setTimeout(() => entry.target.classList.add("in-view"), index * 110);
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.15 },
+  );
+
+  items.forEach((el) => observer.observe(el));
+})();
