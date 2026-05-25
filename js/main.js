@@ -80,6 +80,28 @@
   attachParticles(document.querySelector(".order-btn"), 60);
 })();
 
+// ── Hero video fade-in ────────────────────────────────────────────────────────
+(function () {
+  "use strict";
+
+  var video = document.querySelector(".hero-bg-video");
+  if (!video) return;
+
+  function showVideo() {
+    video.style.opacity = "1";
+  }
+
+  // Fade in as soon as the browser has enough data to start playing
+  video.addEventListener("canplay", showVideo, { once: true });
+
+  // Fallback: force visible after 4s in case canplay never fires (slow network)
+  var fallback = setTimeout(showVideo, 4000);
+
+  video.addEventListener("canplay", function () {
+    clearTimeout(fallback);
+  }, { once: true });
+})();
+
 // ── Scroll reveal ─────────────────────────────────────────────────────────────
 (function () {
   "use strict";

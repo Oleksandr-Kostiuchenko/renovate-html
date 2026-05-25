@@ -350,6 +350,8 @@ body::-webkit-scrollbar {
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  opacity: 0;
+  transition: opacity 900ms ease;
 }
 
 .hero-section::after {
