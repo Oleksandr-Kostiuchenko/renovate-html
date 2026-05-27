@@ -533,8 +533,8 @@
       </div>
     </footer>
 
-    <div class="modal-overlay">
-      <div class="modal">
+    <div class="modal-overlay-test">
+      <div class="modal-test">
         <form class="order-form" name="order-form" autocomplete="off">
           <label class="order-form-label" for="userName">Your Name:</label>
           <input
@@ -627,6 +627,91 @@
           </div>
 
           <button class="order-form-btn" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-overlay">
+      <div class="modal">
+        <button class="close-modal-btn" type="button">
+          <svg class="close-modal-btn-icon" width="8" height="8">
+            <use href="./images/icons.svg#icon-close-black-18dp-2-1"></use>
+          </svg>
+        </button>
+
+        <p class="modal-cta-text">
+          Leave your contacts and we will call you back
+        </p>
+
+        <form class="modal-form">
+          <label class="form-label" for="userNameInput">Name</label>
+          <div class="form-input-wrapper">
+            <input
+              class="form-input"
+              type="text"
+              id="userNameInput"
+              name="user-name"
+              required
+              minlength="3"
+            />
+            <svg class="form-input-icon" width="20" height="20">
+              <use href="./images/icons.svg#icon-person-black-18dp-1"></use>
+            </svg>
+          </div>
+
+          <label class="form-label" for="userPhoneInput">Phone</label>
+          <div class="form-input-wrapper">
+            <input
+              class="form-input"
+              type="tel"
+              id="userPhoneInput"
+              name="user-phone"
+              required
+            />
+            <svg class="form-input-icon" width="20" height="24">
+              <use href="./images/icons.svg#icon-phone-black-18dp-1"></use>
+            </svg>
+          </div>
+
+          <label class="form-label" for="userEmailInput">Email</label>
+          <div class="form-input-wrapper">
+            <input
+              class="form-input"
+              type="email"
+              id="userEmailInput"
+              name="user-email"
+              required
+            />
+            <svg class="form-input-icon" width="20" height="24">
+              <use href="./images/icons.svg#icon-email-black-18dp-1"></use>
+            </svg>
+          </div>
+
+          <label class="form-label" for="userCommentInput">Comment</label>
+          <textarea
+            class="form-textarea"
+            name="user-comment"
+            id="userCommentInput"
+            placeholder="Text input"
+          ></textarea>
+
+          <label class="privacy-policy-label" for="privacyPolicy">
+            <input
+              class="privacy-policy-input-checkbox"
+              type="checkbox"
+              id="privacyPolicy"
+              required
+            />
+            <span class="privacy-policy-span-checkbox">
+              <svg class="privacy-policy-icon" width="10" height="8">
+                <use href="./images/icons.svg#icon-Vector"></use>
+              </svg>
+            </span>
+            I accept the terms and conditions of the
+            <span class="privacy-policy">Privacy Policy</span>
+          </label>
+
+          <button class="form-submit-btn" type="submit">Send</button>
         </form>
       </div>
     </div>
