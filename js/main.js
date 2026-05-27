@@ -21,6 +21,28 @@
     document.body.classList.remove("no-scroll");
   }
 
+  // Menu
+  const refsMenu = {
+    openMenuBtn: document.querySelector("[data-menu-open]"),
+    closeMenuBtn: document.querySelector("[data-menu-close]"),
+    menu: document.querySelector("[data-menu]"),
+  };
+
+  refsMenu.openMenuBtn.addEventListener("click", openMenu);
+  refsMenu.closeMenuBtn.addEventListener("click", closeMenu);
+
+  function openMenu() {
+    refsMenu.menu.classList.add("is-open");
+    refsMenu.openMenuBtn.classList.add("is-rotated");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeMenu() {
+    refsMenu.menu.classList.remove("is-open");
+    refsMenu.openMenuBtn.classList.remove("is-rotated");
+    document.body.classList.remove("no-scroll");
+  }
+
   // ── Logo + button particle system ─────────────────────────────────────────
   const logo = document.querySelector(".page-logo");
   const colors = [

@@ -37,7 +37,7 @@
           </ul>
         </nav>
 
-        <address>
+        <address class="header-addres-wrapper">
           <ul class="adress-list">
             <li class="adress-list-item">
               <a href="mailto:info@devstudio.com" class="adress-link"
@@ -51,6 +51,12 @@
             </li>
           </ul>
         </address>
+
+        <button class="mobile-menu-header-btn" type="button" data-menu-open>
+          <svg class="menu-btn-icon" width="24" height="24">
+            <use href="./images/icons.svg#icon-heroicons-solid_menu"></use>
+          </svg>
+        </button>
       </div>
     </header>
 
@@ -87,6 +93,32 @@
       <section id="benefits-section">
         <div class="container benefits-section-container">
           <!-- <div class="loading-animation"></div> -->
+
+          <!-- <div class="test-container">
+            <div class="element">1</div>
+            <div class="element">2</div>
+            <div class="element">3</div>
+            <div class="element">4</div>
+            <div class="element">5</div>
+            <div class="element">6</div>
+            <div class="element">7</div>
+            <div class="element">8</div>
+            <div class="element">9</div>
+            <div class="element">10</div>
+          </div> -->
+
+          <!-- <img
+            src="https://fastly.picsum.photos/id/237/320/240.jpg?hmac=neCfc9QwX6I17M9h6Ugc864F--kM0_NBVNlfBvu3Jxg"
+            srcset="
+              https://fastly.picsum.photos/id/237/320/240.jpg?hmac=neCfc9QwX6I17M9h6Ugc864F--kM0_NBVNlfBvu3Jxg 1x,
+              https://fastly.picsum.photos/id/237/640/480.jpg?hmac=WUvxmj5giHkcHhGASm19RfCwScxNCvBvlABvSbbeNYQ 2x
+            "
+            alt="dog"
+            width="320"
+            height="240"
+          /> -->
+
+          <div class="test-bg"></div>
 
           <h2 class="benefits-section-title">Benefits</h2>
 
@@ -733,12 +765,76 @@
                 <use href="./images/icons.svg#icon-Vector"></use>
               </svg>
             </span>
-            I accept the terms and conditions of the
-            <span class="privacy-policy">Privacy Policy</span>
+            <div class="privacy-policy-txt">
+              I accept the terms and conditions of the
+              <span class="privacy-policy">Privacy Policy</span>
+            </div>
           </label>
 
           <button class="form-submit-btn" type="submit">Send</button>
         </form>
+      </div>
+    </div>
+
+    <div class="menu-overlay" data-menu>
+      <div class="container modal-menu-overlay">
+        <button class="close-modal-menu-btn" type="button" data-menu-close>
+          <svg class="close-modal-menu-btn-icon" width="8" height="8">
+            <use href="./images/icons.svg#icon-close-black-18dp-2-1"></use>
+          </svg>
+        </button>
+
+        <nav class="menu-page-nav">
+          <ul class="menu-page-nav-list">
+            <li class="menu-nav-list-item">
+              <a href="#benefits-section" class="menu-nav-link">Solutions</a>
+            </li>
+            <li class="menu-nav-list-item">
+              <a href="#team" class="menu-nav-link">AI Agents</a>
+            </li>
+            <li class="menu-nav-list-item">
+              <a href="#contacts" class="menu-nav-link">Contacts</a>
+            </li>
+          </ul>
+        </nav>
+
+        <address class="menu-addres-wrapper">
+          <ul class="menu-adress-list">
+            <li class="menu-adress-list-item">
+              <a href="tel:+11000111111" class="menu-adress-link"
+                >+11 (000) 111-11-11</a
+              >
+            </li>
+            <li class="menu-adress-list-item">
+              <a href="mailto:info@devstudio.com" class="menu-adress-link"
+                >info@devstudio.com</a
+              >
+            </li>
+          </ul>
+        </address>
+
+        <ul class="footer-social-media-list menu-social-media-list">
+          <li class="team-member-icons-list-item footer-social-media-icon">
+            <svg class="team-member-icon" width="16" height="16">
+              <use href="./images/icons.svg#icon-instagram-2"></use>
+            </svg>
+          </li>
+          <li class="team-member-icons-list-item footer-social-media-icon">
+            <svg class="team-member-icon" width="16" height="16">
+              <use href="./images/icons.svg#icon-twitter-1"></use>
+            </svg>
+          </li>
+          <li class="team-member-icons-list-item footer-social-media-icon">
+            <svg class="team-member-icon" width="16" height="16">
+              <use href="./images/icons.svg#icon-facebook-1"></use>
+            </svg>
+          </li>
+          <li class="team-member-icons-list-item footer-social-media-icon">
+            <svg class="team-member-icon" width="16" height="16">
+              <use href="./images/icons.svg#icon-linkedin-1"></use>
+            </svg>
+          </li>
+        </ul>
       </div>
     </div>
 
