@@ -73,7 +73,12 @@
             Solutions for Your Business
           </h1>
 
-          <button type="button" class="order-btn" data-text="Get Started">
+          <button
+            type="button"
+            class="order-btn"
+            data-text="Get Started"
+            data-modal-open
+          >
             Get Started
           </button>
         </div>
@@ -495,7 +500,7 @@
 
     <footer class="footer-section" id="contacts">
       <div class="container footer-container">
-        <div>
+        <div class="footer-studio-wrapper">
           <a class="page-logo-footer" href="./index.html">
             <span class="page-footer-logo-span">AI</span>studio</a
           >
@@ -505,7 +510,8 @@
             automation, and scalable digital transformation tools.
           </p>
         </div>
-        <div>
+
+        <div class="footer-social-wrapper">
           <p class="footer-p-social-media">Social media</p>
           <ul class="team-member-icons-list footer-social-media-list">
             <li class="team-member-icons-list-item footer-social-media-icon">
@@ -529,6 +535,26 @@
               </svg>
             </li>
           </ul>
+        </div>
+
+        <div class="footer-form-wrapper">
+          <p class="footer-cta-text">Subscribe</p>
+          <form class="footer-form">
+            <input
+              class="footer-email-input"
+              placeholder="E-mail"
+              type="email"
+              name="user-email-subscribe"
+              required
+            />
+
+            <button class="footer-form-submit-btn" type="submit">
+              Subscribe
+              <svg class="footer-btn-icon" width="24" height="24">
+                <use href="./images/icons.svg#icon-Frame-3"></use>
+              </svg>
+            </button>
+          </form>
         </div>
       </div>
     </footer>
@@ -631,9 +657,9 @@
       </div>
     </div>
 
-    <div class="modal-overlay">
+    <div class="modal-overlay" data-modal>
       <div class="modal">
-        <button class="close-modal-btn" type="button">
+        <button class="close-modal-btn" type="button" data-modal-close>
           <svg class="close-modal-btn-icon" width="8" height="8">
             <use href="./images/icons.svg#icon-close-black-18dp-2-1"></use>
           </svg>

@@ -1,6 +1,26 @@
 (function () {
   "use strict";
 
+  // Modal
+  const refs = {
+    openModalBtn: document.querySelector("[data-modal-open]"),
+    closeModalBtn: document.querySelector("[data-modal-close]"),
+    modal: document.querySelector("[data-modal]"),
+  };
+
+  refs.openModalBtn.addEventListener("click", openModal);
+  refs.closeModalBtn.addEventListener("click", closeModal);
+
+  function openModal() {
+    refs.modal.classList.add("is-open");
+    document.body.classList.add("no-scroll");
+  }
+
+  function closeModal() {
+    refs.modal.classList.remove("is-open");
+    document.body.classList.remove("no-scroll");
+  }
+
   // ── Logo + button particle system ─────────────────────────────────────────
   const logo = document.querySelector(".page-logo");
   const colors = [
@@ -97,9 +117,13 @@
   // Fallback: force visible after 4s in case canplay never fires (slow network)
   var fallback = setTimeout(showVideo, 4000);
 
-  video.addEventListener("canplay", function () {
-    clearTimeout(fallback);
-  }, { once: true });
+  video.addEventListener(
+    "canplay",
+    function () {
+      clearTimeout(fallback);
+    },
+    { once: true },
+  );
 })();
 
 // ── Scroll reveal ─────────────────────────────────────────────────────────────
@@ -111,10 +135,7 @@
   ).matches;
 
   // ── Class-based reveal: headings, portfolio, footer ──────────────────────
-  const singles = [
-    ".team-section-title",
-    ".portfolio-section-title",
-  ];
+  const singles = [".team-section-title", ".portfolio-section-title"];
 
   const staggerGroups = [
     { selector: ".portfolio-list-item", delay: 70 },
@@ -177,7 +198,9 @@
           el.style.transform = "";
           el.addEventListener(
             "transitionend",
-            () => { el.style.transition = ""; },
+            () => {
+              el.style.transition = "";
+            },
             { once: true },
           );
         }, i * 100);
