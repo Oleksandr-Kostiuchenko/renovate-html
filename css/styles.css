@@ -620,6 +620,13 @@ body::-webkit-scrollbar {
 }
 
 @media (max-width: 767px) {
+  .hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .hero-section-title {
     width: 216px;
 
@@ -2337,13 +2344,14 @@ input[type="checkbox"]:checked + label {
 
 @media (max-width: 767px) {
   .modal {
-    width: 288px;
+    width: 90%;
+
     padding: 72px 16px 24px 16px;
   }
 
   .form-input,
   .form-textarea {
-    width: 256px;
+    width: 100%;
   }
 }
 /* ------------------------------------- /MODAL ------------------------------------- */
