@@ -26,10 +26,14 @@
     openMenuBtn: document.querySelector("[data-menu-open]"),
     closeMenuBtn: document.querySelector("[data-menu-close]"),
     menu: document.querySelector("[data-menu]"),
+    anchorLink: document.querySelectorAll("[anchor-link]"),
   };
 
   refsMenu.openMenuBtn.addEventListener("click", openMenu);
   refsMenu.closeMenuBtn.addEventListener("click", closeMenu);
+  refsMenu.anchorLink.forEach((element) => {
+    element.addEventListener("click", closeMenu);
+  });
 
   function openMenu() {
     refsMenu.menu.classList.add("is-open");
