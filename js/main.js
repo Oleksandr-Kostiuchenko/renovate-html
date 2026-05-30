@@ -6,6 +6,7 @@
     openModalBtn: document.querySelector("[data-modal-open]"),
     closeModalBtn: document.querySelector("[data-modal-close]"),
     modal: document.querySelector("[data-modal]"),
+    modalWindow: document.querySelector("[data-modal-window]"),
   };
 
   refs.openModalBtn.addEventListener("click", openModal);
@@ -13,12 +14,14 @@
 
   function openModal() {
     refs.modal.classList.add("is-open");
+    refs.modalWindow.classList.add("is-open");
     document.body.classList.add("no-scroll");
     document.documentElement.classList.add("no-scroll");
   }
 
   function closeModal() {
     refs.modal.classList.remove("is-open");
+    refs.modalWindow.classList.remove("is-open");
     document.body.classList.remove("no-scroll");
     document.documentElement.classList.remove("no-scroll");
   }
@@ -272,4 +275,272 @@
   );
 
   items.forEach((el) => observer.observe(el));
+})();
+
+// ── Sticky header ─────────────────────────────────────────────────────────────
+(function () {
+  "use strict";
+
+  const header = document.querySelector(".page-header");
+  if (!header) return;
+
+  let spacer = null;
+  let isSticky = false;
+
+  function makeSticky() {
+    if (isSticky) return;
+    isSticky = true;
+    const height = header.offsetHeight;
+    spacer = document.createElement("div");
+    spacer.id = "header-spacer";
+    spacer.style.height = height + "px";
+    header.parentNode.insertBefore(spacer, header.nextSibling);
+    header.classList.add("is-sticky");
+  }
+
+  function makeNormal() {
+    if (!isSticky) return;
+    isSticky = false;
+    if (spacer) {
+      spacer.remove();
+      spacer = null;
+    }
+    header.classList.remove("is-sticky");
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      window.scrollY > 80 ? makeSticky() : makeNormal();
+    },
+    { passive: true },
+  );
+})();
+
+// ── Page loader ───────────────────────────────────────────────────────────────
+(function () {
+  "use strict";
+
+  const loader = document.getElementById("page-loader");
+  if (!loader || loader.style.display === "none") return;
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    loader.remove();
+    sessionStorage.setItem("aistudio-loaded", "1");
+    return;
+  }
+
+  setTimeout(function () {
+    loader.style.transition = "transform 600ms cubic-bezier(0.76, 0, 0.24, 1)";
+    loader.style.transform = "translateX(100%)";
+    setTimeout(function () {
+      loader.remove();
+      sessionStorage.setItem("aistudio-loaded", "1");
+    }, 650);
+  }, 1600);
+})();
+
+// ── Typing hero animation ─────────────────────────────────────────────────────
+(function () {
+  "use strict";
+
+  const phraseEl = document.querySelector(".hero-typing-phrase");
+  if (!phraseEl) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const phrases = [
+    "for Sales Teams",
+    "for Customer Support",
+    "for Data Analytics",
+    "for Marketing",
+    "for Enterprises",
+  ];
+
+  let current = 0;
+  const VISIBLE = 2500;
+  const FADE = 400;
+
+  function cycle() {
+    phraseEl.style.transition = "opacity " + FADE + "ms ease";
+    phraseEl.style.opacity = "0";
+
+    setTimeout(function () {
+      current = (current + 1) % phrases.length;
+      phraseEl.textContent = phrases[current];
+      phraseEl.style.opacity = "1";
+      setTimeout(cycle, VISIBLE);
+    }, FADE);
+  }
+
+  setTimeout(cycle, VISIBLE);
+})();
+
+// ── Stats counters + radial rings ─────────────────────────────────────────────
+(function () {
+  "use strict";
+
+  const section = document.getElementById("stats-section");
+  if (!section) return;
+
+  const CIRC = 2 * Math.PI * 38;
+  const CONFIG = [
+    { target: 500, suffix: "+", fill: 0.75 },
+    { target: 98, suffix: "%", fill: 0.98 },
+    { target: 40, suffix: "+", fill: 0.6 },
+    { target: 3, suffix: "×", fill: 0.8 },
+  ];
+
+  const numberEls = section.querySelectorAll(".stats-number");
+  const ringEls = section.querySelectorAll(".stats-ring-fill");
+
+  ringEls.forEach(function (r) {
+    r.style.strokeDasharray = CIRC;
+    r.style.strokeDashoffset = CIRC;
+  });
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reduced) {
+    numberEls.forEach(function (el, i) {
+      el.textContent = CONFIG[i].target + CONFIG[i].suffix;
+    });
+    ringEls.forEach(function (el, i) {
+      el.style.strokeDashoffset = CIRC * (1 - CONFIG[i].fill);
+    });
+    return;
+  }
+
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  function animateCounter(el, cfg, delay) {
+    setTimeout(function () {
+      var start = performance.now();
+      var dur = 1800;
+      function tick(now) {
+        var p = Math.min((now - start) / dur, 1);
+        el.textContent = Math.round(easeOutCubic(p) * cfg.target) + cfg.suffix;
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }, delay);
+  }
+
+  function animateRing(el, fill, delay) {
+    setTimeout(function () {
+      var target = CIRC * (1 - fill);
+      var start = performance.now();
+      var dur = 1800;
+      function tick(now) {
+        var p = Math.min((now - start) / dur, 1);
+        el.style.strokeDashoffset = CIRC - (CIRC - target) * easeOutCubic(p);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }, delay);
+  }
+
+  var fired = false;
+  var obs = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting || fired) return;
+        fired = true;
+        obs.disconnect();
+        numberEls.forEach(function (el, i) {
+          animateCounter(el, CONFIG[i], i * 120);
+        });
+        ringEls.forEach(function (el, i) {
+          animateRing(el, CONFIG[i].fill, i * 120);
+        });
+      });
+    },
+    { threshold: 0.3 },
+  );
+
+  obs.observe(section);
+})();
+
+// ── Footer email input error handling ─────────────────────────────────────────
+(function () {
+  "use strict";
+
+  const footerForm = document.querySelector(".footer-form");
+  if (!footerForm) return;
+
+  const inputWrap = footerForm.querySelector(".t-input-wrap");
+  const inputEl = footerForm.querySelector(".t-input");
+  const emailInput = footerForm.querySelector(".footer-email-input");
+
+  if (!inputWrap || !inputEl || !emailInput) return;
+
+  // Validate email format
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  // Trigger shake animation by restarting the animation
+  function triggerShake() {
+    // Remove the animation class to stop it
+    inputEl.classList.remove("is-shaking");
+    // Force a reflow to reset the animation state
+    void inputEl.offsetWidth;
+    // Re-add the animation class to restart it
+    inputEl.classList.add("is-shaking");
+
+    // Get shake duration from CSS variables
+    const root = document.documentElement;
+    const durationA = parseFloat(
+      getComputedStyle(root).getPropertyValue("--shake-dur-a"),
+    );
+    const durationB = parseFloat(
+      getComputedStyle(root).getPropertyValue("--shake-dur-b"),
+    );
+    const totalDuration = durationA * 2 + durationB * 2;
+
+    // Remove shake class after animation completes so it can be restarted
+    setTimeout(() => {
+      inputEl.classList.remove("is-shaking");
+    }, totalDuration);
+  }
+
+  // Show error state
+  function showError() {
+    inputWrap.classList.add("is-error");
+    inputEl.classList.add("is-error");
+    triggerShake();
+
+    // Get the revert timing from CSS variables
+    const root = document.documentElement;
+    const revertHold = parseInt(
+      getComputedStyle(root).getPropertyValue("--revert-hold"),
+      10,
+    );
+
+    // After revert-hold time, remove error classes
+    setTimeout(() => {
+      inputWrap.classList.remove("is-error");
+      inputEl.classList.remove("is-error");
+    }, revertHold);
+  }
+
+  // Handle form submission
+  footerForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+
+    if (!isValidEmail(email)) {
+      showError();
+    } else {
+      // On success, clear any existing error state and submit
+      inputWrap.classList.remove("is-error");
+      inputEl.classList.remove("is-error");
+
+      // Submit the form
+      footerForm.submit();
+    }
+  });
 })();

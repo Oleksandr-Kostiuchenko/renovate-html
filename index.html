@@ -17,6 +17,22 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
+    <!-- Page loader -->
+    <div id="page-loader" aria-hidden="true">
+      <div class="loader-inner">
+        <div class="loader-logo">
+          <span class="loader-logo-ai">AI</span>studio
+        </div>
+        <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+        <p class="loader-tagline">Initializing AI</p>
+      </div>
+    </div>
+    <script>
+      if (sessionStorage.getItem("aistudio-loaded")) {
+        document.getElementById("page-loader").style.display = "none";
+      }
+    </script>
+
     <header class="page-header">
       <div class="container page-header-container">
         <a class="page-logo" href="./index.html" data-text="AIstudio">
@@ -78,6 +94,11 @@
             <span class="ai-chip"><span class="gradient-text">AI</span></span>
             Solutions for Your Business
           </h1>
+
+          <p class="hero-typing-line" aria-live="polite">
+            Specialized <span class="hero-typing-phrase">for Sales Teams</span
+            ><span class="hero-typing-cursor" aria-hidden="true"></span>
+          </p>
 
           <button
             type="button"
@@ -144,6 +165,157 @@
                 Our AI infrastructure is designed to scale with your business
                 and adapt to future growth.
               </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="stats-section" aria-label="Key statistics">
+        <div class="container">
+          <ul class="stats-list" role="list">
+            <li class="stats-item">
+              <div class="stats-ring-wrapper">
+                <svg
+                  class="stats-ring-svg"
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient
+                      id="ring-grad-0"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#4d5ae5" />
+                      <stop offset="100%" stop-color="#818cf8" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="stats-ring-track" cx="50" cy="50" r="38" />
+                  <circle
+                    class="stats-ring-fill"
+                    cx="50"
+                    cy="50"
+                    r="38"
+                    stroke="url(#ring-grad-0)"
+                  />
+                </svg>
+                <div class="stats-ring-center">
+                  <span class="stats-number" data-target="500" data-suffix="+"
+                    >0+</span
+                  >
+                </div>
+              </div>
+              <p class="stats-label">Clients Served</p>
+            </li>
+            <li class="stats-item">
+              <div class="stats-ring-wrapper">
+                <svg
+                  class="stats-ring-svg"
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient
+                      id="ring-grad-1"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#06b6d4" />
+                      <stop offset="100%" stop-color="#818cf8" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="stats-ring-track" cx="50" cy="50" r="38" />
+                  <circle
+                    class="stats-ring-fill"
+                    cx="50"
+                    cy="50"
+                    r="38"
+                    stroke="url(#ring-grad-1)"
+                  />
+                </svg>
+                <div class="stats-ring-center">
+                  <span class="stats-number" data-target="98" data-suffix="%"
+                    >0%</span
+                  >
+                </div>
+              </div>
+              <p class="stats-label">Satisfaction Rate</p>
+            </li>
+            <li class="stats-item">
+              <div class="stats-ring-wrapper">
+                <svg
+                  class="stats-ring-svg"
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient
+                      id="ring-grad-2"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#c084fc" />
+                      <stop offset="100%" stop-color="#818cf8" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="stats-ring-track" cx="50" cy="50" r="38" />
+                  <circle
+                    class="stats-ring-fill"
+                    cx="50"
+                    cy="50"
+                    r="38"
+                    stroke="url(#ring-grad-2)"
+                  />
+                </svg>
+                <div class="stats-ring-center">
+                  <span class="stats-number" data-target="40" data-suffix="+"
+                    >0+</span
+                  >
+                </div>
+              </div>
+              <p class="stats-label">AI Agents Built</p>
+            </li>
+            <li class="stats-item">
+              <div class="stats-ring-wrapper">
+                <svg
+                  class="stats-ring-svg"
+                  viewBox="0 0 100 100"
+                  aria-hidden="true"
+                >
+                  <defs>
+                    <linearGradient
+                      id="ring-grad-3"
+                      x1="0%"
+                      y1="0%"
+                      x2="100%"
+                      y2="100%"
+                    >
+                      <stop offset="0%" stop-color="#f472b6" />
+                      <stop offset="100%" stop-color="#818cf8" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="stats-ring-track" cx="50" cy="50" r="38" />
+                  <circle
+                    class="stats-ring-fill"
+                    cx="50"
+                    cy="50"
+                    r="38"
+                    stroke="url(#ring-grad-3)"
+                  />
+                </svg>
+                <div class="stats-ring-center">
+                  <span class="stats-number" data-target="3" data-suffix="×"
+                    >0×</span
+                  >
+                </div>
+              </div>
+              <p class="stats-label">Average ROI</p>
             </li>
           </ul>
         </div>
@@ -546,13 +718,19 @@
         <div class="footer-form-wrapper">
           <p class="footer-cta-text">Subscribe</p>
           <form class="footer-form">
-            <input
-              class="footer-email-input"
-              placeholder="E-mail"
-              type="email"
-              name="user-email-subscribe"
-              required
-            />
+            <div class="t-input-wrap">
+              <div class="t-input">
+                <input
+                  class="footer-email-input"
+                  placeholder="E-mail"
+                  type="email"
+                  name="user-email-subscribe"
+                  required
+                  autocomplete="off"
+                />
+              </div>
+              <p class="t-error-msg">Please enter a valid email.</p>
+            </div>
 
             <button class="footer-form-submit-btn" type="submit">
               Subscribe
@@ -566,7 +744,7 @@
     </footer>
 
     <div class="modal-overlay" data-modal>
-      <div class="modal">
+      <div class="modal" data-modal-window>
         <button class="close-modal-btn" type="button" data-modal-close>
           <svg class="close-modal-btn-icon" width="8" height="8">
             <use href="./images/icons.svg#icon-close-black-18dp-2-1"></use>
@@ -716,6 +894,10 @@
       </div>
     </div>
 
+    <div id="cursor-dot" aria-hidden="true"></div>
+    <div id="cursor-ring" aria-hidden="true"></div>
+
+    <script src="./js/cursor.js" defer></script>
     <script src="./js/team-hover.js" defer></script>
     <script src="./js/main.js" defer></script>
   </body>
