@@ -7,8 +7,15 @@ body {
   overflow-x: hidden;
 }
 
-.no-scroll {
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body.no-scroll,
+html.no-scroll {
   overflow: hidden;
+  height: 100%;
 }
 
 svg {
@@ -19,11 +26,6 @@ svg {
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-html {
-  overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 button,

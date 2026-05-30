@@ -14,12 +14,20 @@
   function openModal() {
     refs.modal.classList.add("is-open");
     document.body.classList.add("no-scroll");
+    document.documentElement.classList.add("no-scroll");
   }
 
   function closeModal() {
     refs.modal.classList.remove("is-open");
     document.body.classList.remove("no-scroll");
+    document.documentElement.classList.remove("no-scroll");
   }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && refs.modal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
 
   // Menu
   const refsMenu = {
